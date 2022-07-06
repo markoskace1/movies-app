@@ -10,7 +10,8 @@
 	});
 
 	async function movieData() {
-		let url = `https://api.themoviedb.org/3/search/movie?api_key=1bd73ac48dac8ac96d592f6c8e119f90&language=en-US&query=${searchValue}&page=1&include_adult=false`;
+		const apiKey = import.meta.env.VITE_API_KEY;
+		let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchValue}&page=1&include_adult=false`;
 		let res = await fetch(url);
 		let data = await res.json();
 		movies = data.results;
