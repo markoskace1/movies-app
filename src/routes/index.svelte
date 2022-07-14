@@ -10,8 +10,9 @@
 	});
 
 	async function movieData() {
-		const apiKey = import.meta.env.VITE_API_KEY;
-		let url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchValue}&page=1&include_adult=false`;
+		let url = `https://api.themoviedb.org/3/search/movie?api_key=${
+			import.meta.env.VITE_API_KEY
+		}&language=en-US&query=${searchValue}&page=1&include_adult=false`;
 		let res = await fetch(url);
 		let data = await res.json();
 		movies = data.results;
@@ -41,7 +42,7 @@
 	{#if !movies}
 		<div />
 	{:else}
-		<div class="container mx-auto grid grid-cols-5">
+		<div class="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
 			{#each movies as movie (movie.id)}
 				<div class="items-center p-4 transition ease-in hover:scale-105 hover:shadow-2xl">
 					<div>
